@@ -1,0 +1,181 @@
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot; /&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;
+  &lt;title&gt;Pesawat Trends Explorer&lt;/title&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;A responsive, accessible static site highlighting the strongest opportunity: Pesawat (airplane) trends with a clean, production-ready single-page design.&quot; /&gt;
+  &lt;style&gt;
+    :root{
+      --bg: #0b1020;
+      --card: #141a31;
+      --muted: #96a0b8;
+      --accent: #58d5a4;
+      --accent-2: #7aa8ff;
+      --text: #eaf0ff;
+      --radius: 14px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin:0; padding:0; height:100%; background: radial-gradient( circle at 20% -10%, rgba(88,213,164,.15) 0%, transparent 40%), radial-gradient( circle at 110% 10%, rgba(122,168,255,.15) 0%, transparent 40%), var(--bg); color: var(--text); font-family: system-ui, -apple-system, &quot;Segoe UI&quot;, Roboto, Arial, sans-serif; }
+    a { color: var(--accent-2); text-decoration: none; }
+    header { position: sticky; top:0; z-index: 10; background: rgba(10,12,28,.9); border-bottom: 1px solid rgba(255,255,255,.08); }
+    nav { display:flex; align-items:center; justify-content: space-between; padding: 14px 20px; max-width: 1100px; margin: 0 auto; }
+    .brand { display:flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing:.5px; }
+    .brand .logo { width:28px; height:28px; display:inline-block; border-radius:6px; background: conic-gradient(from 180deg at 50% 50%, #4bd6a6, #7aa8ff, #4b8bff, #4bd6a6); }
+    .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+    main { padding: 40px 0 80px; }
+    h1, h2 { margin: 0 0 12px; }
+    p { color: var(--muted); line-height: 1.6; }
+    .hero { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center; padding: 28px; border-radius: var(--radius); background: linear-gradient(135deg, rgba(20,26,49,.9), rgba(20,26,49,.6)); border:1px solid rgba(255,255,255,.08); }
+    .hero__title { font-size: clamp(1.8rem, 4vw, 3rem); margin-bottom: 6px; }
+    .hero__subtitle { font-size: 1.05rem; color: var(--muted); }
+    .btn { display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:999px; border:1px solid rgba(255,255,255,.2); background: rgba(88,213,164,.15); color:#eafff2; cursor:pointer; transition: transform .2s ease, background .3s ease; }
+    .btn:hover { transform: translateY(-1px); background: rgba(88,213,164,.28); }
+    .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-top: 8px; }
+    article.card { background: rgba(20,26,49,.95); border:1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 16px; }
+    .card__title { font-size: 1.05rem; margin-bottom: 6px; }
+    .chart { width: 100%; height: 90px; display: block; background: linear-gradient(to right, rgba(88,213,164,.15), rgba(122,168,255,.15)); border-radius: 8px; }
+    .stat { font-weight: 700; color: #e9f7ff; }
+    header[aria-hidden=&quot;true&quot;]{ display:none; }
+
+    footer { text-align: center; padding: 28px; color: var(--muted); font-size: .92rem; border-top: 1px solid rgba(255,255,255,.08); margin-top: 40px; }
+
+    @media (min-width: 768px){
+      .hero { grid-template-columns: 1.1fr 0.9fr; padding: 34px; }
+    }
+
+    @media (prefers-color-scheme: light){
+      html { background: #f7f9ff; color: #111; }
+      .grid { color: #111; }
+      article.card { background: #fff; border-color: #eaeaf0; }
+      .chart { background: #f5f8ff; }
+    }
+
+    /* Accessibility helpers */
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header aria-label=&quot;Main navigation&quot;&gt;
+    &lt;nav&gt;
+      &lt;div class=&quot;brand&quot; aria-label=&quot;Brand&quot;&gt;
+        &lt;span class=&quot;logo&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+        &lt;span&gt;Pesawat Trends&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;nav-links&quot; aria-label=&quot;Navigation&quot;&gt;
+        &lt;button class=&quot;btn&quot; id=&quot;ctaFollow&quot; title=&quot;Learn more about Pesawat trends&quot;&gt;Explore Opportunity&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main class=&quot;container&quot; id=&quot;main-content&quot; role=&quot;main&quot;&gt;
+    &lt;section class=&quot;hero&quot; aria-labelledby=&quot;hero-title&quot;&gt;
+      &lt;div&gt;
+        &lt;h1 id=&quot;hero-title&quot; class=&quot;hero__title&quot;&gt;Pesawat Trends Explorer&lt;/h1&gt;
+        &lt;p class=&quot;hero__subtitle&quot;&gt;
+          A polished, single-page site highlighting the strongest opportunity from recent trend data: Pesawat (airplane) searches show the highest demand and growth. This page presents a concise overview, a live-like chart, and a clear call to action.
+        &lt;/p&gt;
+        &lt;div style=&quot;margin-top:14px;&quot;&gt;
+          &lt;button class=&quot;btn&quot; aria-label=&quot;Open opportunity details&quot; id=&quot;learnMore&quot;&gt;
+            Learn more
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div aria-label=&quot;Trend snapshot chart&quot; role=&quot;img&quot; style=&quot;display:flex; align-items:center; justify-content:center;&quot;&gt;
+        &lt;svg class=&quot;chart&quot; viewBox=&quot;0 0 420 90&quot; role=&quot;img&quot; aria-label=&quot;Trend sparkline for Pesawat&quot; focusable=&quot;false&quot;&gt;
+          &lt;polyline fill=&quot;none&quot; stroke=&quot;#58d5a4&quot; stroke-width=&quot;3&quot; points=&quot;0,70 20,60 40,50 60,52 80,40 100,38 120,30 140,28 160,24 180,20 200,22 220,18 240,16 260,14 280,12 300,11 320,12 340,14 360,10 380,8 400,6 420,5&quot; /&gt;
+        &lt;/svg&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section aria-labelledby=&quot;section-title&quot; style=&quot;margin-top:28px;&quot;&gt;
+      &lt;h2 id=&quot;section-title&quot; style=&quot;font-size:1.25rem; margin-bottom:8px;&quot;&gt;Opportunity snapshot&lt;/h2&gt;
+      &lt;p style=&quot;margin:0 0 12px;&quot;&gt;Strongest trend among the set: Pesawat (airplane) with high search volume and a dramatic increase. The following quick-glance stats reflect the opportunity quality.&lt;/p&gt;
+      &lt;div class=&quot;grid&quot; aria-label=&quot;Opportunity cards&quot;&gt;
+        &lt;article class=&quot;card&quot; aria-labelledby=&quot;card1-title&quot;&gt;
+          &lt;div class=&quot;card__title&quot; id=&quot;card1-title&quot;&gt;Opportunity score&lt;/div&gt;
+          &lt;div class=&quot;stat&quot; aria-label=&quot;Opportunity score value&quot; style=&quot;font-size:1.6rem; color:#eafff2&quot;&gt;95&lt;/div&gt;
+          &lt;p style=&quot;margin:6px 0 0;&quot;&gt;Based on volume and surge in interest.&lt;/p&gt;
+        &lt;/article&gt;
+
+        &lt;article class=&quot;card&quot; aria-labelledby=&quot;card2-title&quot;&gt;
+          &lt;div class=&quot;card__title&quot; id=&quot;card2-title&quot;&gt;Search volume&lt;/div&gt;
+          &lt;div class=&quot;stat&quot; aria-label=&quot;Search volume value&quot; style=&quot;font-size:1.6rem; color:#e6f2ff&quot;&gt;10,000&lt;/div&gt;
+          &lt;p style=&quot;margin:6px 0 0;&quot;&gt;Monthly interest in pesawat (airplane).&lt;/p&gt;
+        &lt;/article&gt;
+
+        &lt;article class=&quot;card&quot; aria-labelledby=&quot;card3-title&quot;&gt;
+          &lt;div class=&quot;card__title&quot; id=&quot;card3-title&quot;&gt;Growth&lt;/div&gt;
+          &lt;div class=&quot;stat&quot; aria-label=&quot;Increase percentage&quot; style=&quot;font-size:1.6rem; color:#d6ffea&quot;&gt;+1000%&lt;/div&gt;
+          &lt;p style=&quot;margin:6px 0 0;&quot;&gt;Rapidly increasing relative interest.&lt;/p&gt;
+        &lt;/article&gt;
+
+        &lt;article class=&quot;card&quot; aria-labelledby=&quot;card4-title&quot;&gt;
+          &lt;div class=&quot;card__title&quot; id=&quot;card4-title&quot;&gt;Category&lt;/div&gt;
+          &lt;div class=&quot;stat&quot; aria-label=&quot;Category&quot; style=&quot;font-size:1.6rem; color:#e7e0ff&quot;&gt;Law and Government&lt;/div&gt;
+          &lt;p style=&quot;margin:6px 0 0;&quot;&gt;Impactful regulatory and policy discussions around air travel.&lt;/p&gt;
+        &lt;/article&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section aria-labelledby=&quot;guide-title&quot; style=&quot;margin-top:32px;&quot;&gt;
+      &lt;h2 id=&quot;guide-title&quot; style=&quot;font-size:1.25rem; margin-bottom:6px;&quot;&gt;How to leverage this&lt;/h2&gt;
+      &lt;p&gt;
+        Use this page as a starter for a professional static site on GitHub Pages. It demonstrates semantic HTML, accessible structure, responsive layout, and embedded CSS/JS without dependencies.
+      &lt;/p&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Accessible navigation and landmarks&lt;/li&gt;
+        &lt;li&gt;Responsive grid and typography&lt;/li&gt;
+        &lt;li&gt;Inline SVG chart for a lightweight data visualization&lt;/li&gt;
+        &lt;li&gt;Production-ready structure suitable for GitHub Pages&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/section&gt;
+
+    &lt;section aria-labelledby=&quot;cta-title&quot; style=&quot;margin-top:40px;&quot;&gt;
+      &lt;h2 id=&quot;cta-title&quot; style=&quot;font-size:1.25rem; margin-bottom:6px;&quot;&gt;Get involved&lt;/h2&gt;
+      &lt;p&gt;Fork this repository and customize the content for your own trend-based static site. It uses only vanilla JS and CSS, with no build steps.&lt;/p&gt;
+      &lt;button class=&quot;btn&quot; aria-label=&quot;Copy repo URL&quot; id=&quot;copyUrl&quot;&gt;Copy repo URL&lt;/button&gt;
+      &lt;span id=&quot;copied&quot; aria-live=&quot;polite&quot; class=&quot;sr-only&quot; style=&quot;margin-left:8px;&quot;&gt;Link copied to clipboard&lt;/span&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;footer aria-label=&quot;Footer&quot;&gt;
+    &lt;p&gt;Pesawat Trends Explorer · a lightweight, accessible static site example for GitHub Pages&lt;/p&gt;
+  &lt;/footer&gt;
+
+  &lt;script&gt;
+    // Minimal interactive polish
+    (function(){
+      const learnMore = document.getElementById(&#39;learnMore&#39;);
+      const ctaFollow = document.getElementById(&#39;ctaFollow&#39;);
+      const copyBtn = document.getElementById(&#39;copyUrl&#39;);
+      const copied = document.getElementById(&#39;copied&#39;);
+      function announce(msg){ copied.textContent = &#39;&#39;; void copied.offsetWidth; copied.textContent = msg; }
+
+      learnMore &amp;&amp; learnMore.addEventListener(&#39;click&#39;, () =&gt; {
+        window.scrollTo({ top: 0, behavior: &quot;smooth&quot; });
+        announce(&#39;Opportunity details are in the summary cards above.&#39;);
+      });
+
+      if(copyBtn){
+        copyBtn.addEventListener(&#39;click&#39;, async () =&gt; {
+          try {
+            await navigator.clipboard.writeText(&#39;https://github.com/your-username/pesawat-trends-landing&#39;);
+            announce(&#39;Repository URL copied to clipboard&#39;);
+          } catch(e){
+            announce(&#39;Copy failed, please copy manually&#39;);
+          }
+        });
+      }
+
+      // simple focus trigger for accessibility
+      document.addEventListener(&#39;keydown&#39;, (e) =&gt; {
+        if(e.key === &#39;Escape&#39;){
+          document.activeElement.blur();
+        }
+      });
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+INDEX_HTML_END
